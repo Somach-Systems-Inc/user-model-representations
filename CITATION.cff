@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this study or code, please cite it as below."
+title: "User-model representations of emotional vulnerability"
+type: software
+authors:
+  - family-names: Kho
+    given-names: Carl Vincent
+date-released: 2026-08-18
+license: MIT
+repository-code: "https://github.com/Somach-Systems-Inc/user-model-representations"
+abstract: >-
+  An exploratory activation-probing and causal-intervention study of whether
+  language models represent synthetic cues of user emotional vulnerability.
