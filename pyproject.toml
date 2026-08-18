@@ -1,0 +1,17 @@
+[project]
+name = "user-model-representations"
+version = "0.1.0"
+description = "Activation probes and causal tests for user emotional-vulnerability representations"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.4",
+    "transformers>=4.46",
+    "accelerate>=1.0",
+    "scikit-learn>=1.5",
+    "einops>=0.8",
+    "matplotlib>=3.9",
+    "openai>=1.50",
+    "tqdm>=4.66",
+]

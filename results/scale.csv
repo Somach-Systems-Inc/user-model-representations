@@ -1,0 +1,4 @@
+model,unseen_family_probe_auc,tfidf_auc,generator_transfer_probe_auc
+Qwen3.5-4B,0.923,0.948,0.809
+Qwen3.5-9B,0.963,0.948,
+Qwen3.5-27B,0.985,0.948,0.984
