@@ -49,8 +49,7 @@ identical holdout on the same activations:
 | Qwen 3.5 9B | 0.929 (was 0.963) | 0.940 |
 | Qwen 3.5 27B | 0.975 (was 0.985) | 0.940 |
 
-The 4B and 9B results were partly the leak; only the 27B probe beats the text baseline
-on every family, and the scale trend widens. A regenerated dataset (v2) that removed the
+The 4B and 9B results were partly the leak; only the 27B probe's mean exceeds the text baseline (paired bootstrap over held-out pairs: +0.035, 95% CI 0.010–0.063), and the scale trend widens. Steering was run on the 4B model only. A regenerated dataset (v2) that removed the
 social anchor at the prompt saturated instead — the new neutral prompt produced a
 spec-sheet register that a word-counter reads at 0.995 — so the register was matched
 in a third generation (v3); see `RESULTS_UPDATE_2026-09-03.md` for all numbers. The
