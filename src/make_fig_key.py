@@ -31,15 +31,8 @@ DATASETS = [
     dict(key="v1c", label="v1 cleaned\n59 explicit\npairs removed", probe={"4B": 0.867, "9B": 0.929, "27B": 0.975}, bow=0.940, n=282, bow_pos=("left", "above")),
     dict(key="v2", label="v2\nspec-sheet\nregister leaks", probe={"4B": 0.996, "9B": 0.996, "27B": 0.996}, bow=0.995, n=400, bow_pos=("left", "below")),
     dict(key="v3", label="v3\naside list\nnever held out", probe={"4B": 0.943, "9B": 0.945, "27B": 0.981}, bow=0.997, n=400, bow_pos=("left", "above")),
+    dict(key="v4", label="v4\nboth sides\nheld out", probe={"4B": 0.832, "9B": 0.794, "27B": 0.901}, bow=0.802, n=400, bow_pos=("left", "below")),
 ]
-# v4 (symmetric holdout) slot: taken from out/fig_datasets.json if its probe dict is filled.
-try:
-    for d in json.load(open(os.path.join(ROOT, "out", "fig_datasets.json"))):
-        if d["label"].startswith("v4") and d.get("probe") and d.get("bow") is not None:
-            DATASETS.append(dict(key="v4", label="v4\nboth sides\nheld out", probe=d["probe"], bow=d["bow"], n=d.get("n", 400)))
-except FileNotFoundError:
-    pass
-
 # ---- (b)/(c) data: steering, recomputed from raw judge / self-report outputs -------
 def load_jsonl(p):
     return [json.loads(l) for l in open(p)]
@@ -60,7 +53,7 @@ def mean_se(xs):
 # ---- figure -------------------------------------------------------------------
 plt.rcParams.update({"font.family": "sans-serif", "font.size": 8, "axes.edgecolor": AXIS,
                      "xtick.color": INK2, "ytick.color": INK2, "axes.labelcolor": INK2})
-fig = plt.figure(figsize=(6.5, 4.0), dpi=200, facecolor="white")
+fig = plt.figure(figsize=(7.6, 4.2), dpi=200, facecolor="white")
 gs = gridspec.GridSpec(2, 2, figure=fig, width_ratios=[1.55, 1], height_ratios=[1, 1],
                        wspace=0.36, hspace=0.55, left=0.115, right=0.975, top=0.93, bottom=0.2)
 axA = fig.add_subplot(gs[:, 0]); axB = fig.add_subplot(gs[0, 1]); axC = fig.add_subplot(gs[1, 1])
@@ -71,8 +64,8 @@ for ax in (axA, axB, axC):
     ax.tick_params(length=2.5, width=0.6, labelsize=7.5)
 
 # (a) probe vs text, per dataset group ------------------------------------------
-GW = 1.0; step = 0.28; ms = {"4B": 4.5, "9B": 5.5, "27B": 6.5}
-YMIN = 0.84
+GW = 1.0; step = 0.24; ms = {"4B": 4.5, "9B": 5.5, "27B": 6.5}
+YMIN = 0.75
 for gi, d in enumerate(DATASETS):
     x0 = gi * GW
     ys = [d["probe"][s] for s in SCALES if s in d["probe"]]
@@ -98,10 +91,10 @@ for gi, d in enumerate(DATASETS):
     if gi == 0:
         for x, s in zip(xs, [q for q in SCALES if q in d["probe"]]):
             axA.annotate(s, (x, YMIN), xytext=(0, 2), textcoords="offset points", ha="center", va="bottom", fontsize=6.3, color=MUTED)
-axA.set_xticks([gi * GW for gi in range(len(DATASETS))], [d["label"] for d in DATASETS], fontsize=6.8, color=INK, linespacing=1.15)
+axA.set_xticks([gi * GW for gi in range(len(DATASETS))], [d["label"] for d in DATASETS], fontsize=6.3, color=INK, linespacing=1.2)
 axA.set_xlim(-0.6, (len(DATASETS) - 1) * GW + 0.6)
-axA.set_ylim(YMIN, 1.008); axA.set_yticks([0.85, 0.90, 0.95, 1.00])
-axA.set_ylabel("mean AUC, held-out cue family\n(axis from 0.84; chance = 0.50)", fontsize=7.5, color=INK2)
+axA.set_ylim(YMIN, 1.012); axA.set_yticks([0.80, 0.85, 0.90, 0.95, 1.00])
+axA.set_ylabel("mean AUC, held-out cue family\n(axis from 0.75; chance = 0.50)", fontsize=7.5, color=INK2)
 axA.set_title("a   Probe vs. bag-of-words on unseen cue families", loc="left", fontsize=8.2, color=INK, fontweight="bold", pad=5)
 axA.legend(handles=[Line2D([], [], color=BLUE, lw=2, marker="o", ms=5, mec="white", label="probe, 4B → 9B → 27B"),
                     Line2D([], [], color=GRAY, lw=2, ls=(0, (3, 2)), label="TF-IDF bag-of-words, same text")],

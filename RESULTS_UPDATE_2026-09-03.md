@@ -1,4 +1,4 @@
-# Results update — 2026-09-03 (post-publication data audit and regenerations)
+# Results update — 2026-09-03/04 (post-publication audit, four dataset generations, symmetric holdout)
 
 ## 7. Robustness: explicit-self-report pairs removed (2026-09-03, local, free)
 
@@ -90,3 +90,29 @@ neutral. Answer rate 126/141 and 123/141. Mean rating lonely 4.36, neutral 3.96.
 reasoning off the model says it, and what it says is near chance. The probe on the same
 cleaned conversations: 0.867 (4B). Raw: out/inrole_lonely.jsonl, out/inrole_neutral.jsonl;
 summary: review/inrole_result.txt.
+
+### v4 at 27B (2026-09-04, both 5090s, bf16) — the symmetric holdout does not erase the margin
+
+The 27B point missing above was run locally: `CUDA_VISIBLE_DEVICES=0,1` (a user env var
+had pinned torch to one card), model sharded across two RTX 5090s with
+`src/extract_activations_mp.py`, same bf16 and same final-prompt-token position as the
+H200 runs.
+
+| dataset | scale | probe [95% CI] | BoW | probe − BoW [95% CI] | verdict |
+|---|---|---|---|---|---|
+| v4 (200 pairs) | 4B | 0.832 | 0.802 | +0.031 [−0.020, 0.080] | noise |
+| v4 | 9B | 0.794 | 0.802 | −0.008 [−0.058, 0.041] | noise |
+| v4 | **27B** | **0.901 [0.872, 0.927]** | 0.802 [0.765, 0.839] | **+0.099 [0.054, 0.140]** | **probe > text** |
+| v4-strict (178 pairs) | 4B | 0.787 | 0.765 | +0.022 [−0.035, 0.079] | noise |
+| v4-strict | 9B | 0.780 | 0.765 | +0.015 [−0.053, 0.076] | noise |
+| v4-strict | **27B** | **0.908 [0.877, 0.937]** | 0.765 [0.722, 0.809] | **+0.143 [0.093, 0.193]** | **probe > text** |
+
+Scale differences on v4 (paired): 27B−4B +0.068 [0.029, 0.105]; 27B−9B +0.106
+[0.068, 0.148]; 9B−4B −0.038 (noise). Per family at 27B, the margin excludes zero on
+empty_plans (+0.338) and odd_hours (+0.098), not on no_contact or solo_meals.
+
+Reading: with both classes' vocabularies held out, the text baseline drops to 0.802 and
+the small probes drop with it, but the 27B probe holds at 0.90 and beats text by a
+larger margin than it ever did on the leaky datasets (+0.099 vs +0.035 on cleaned v1).
+The advantage over vocabulary is a 27B phenomenon, and it survives the only test in
+this study where a probe-versus-text comparison is fair.
