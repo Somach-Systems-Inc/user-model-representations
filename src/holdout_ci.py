@@ -47,7 +47,8 @@ DATASETS = [
     ("v1", "data/convos_fam.jsonl", "data/acts_fam_{s}.pt", SCALES),
     ("v1-clean", "data/convos_fam_clean.jsonl", "data/acts_fam_{s}.pt", SCALES),
     ("v3", "data/convos_fam_v3.jsonl", "data/acts_fam_v3_{s}.pt", SCALES),
-    ("v4", "data/convos_fam_v4.jsonl", "data/acts_fam_v4_{s}.pt", ["4B", "9B"]),
+    ("v4", "data/convos_fam_v4.jsonl", "data/acts_fam_v4_{s}.pt", ["4B", "9B", "27B"]),
+    ("v4-strict", "data/convos_fam_v4_strict.jsonl", "data/acts_fam_v4_{s}.pt", ["4B", "9B", "27B"]),
 ]
 # Headline numbers quoted in WRITEUP.md, used only to label the checks below.
 WRITEUP_CLAIMS = {

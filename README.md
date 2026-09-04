@@ -50,9 +50,14 @@ identical holdout on the same activations:
 | Qwen 3.5 27B | 0.975 (was 0.985) | 0.940 |
 
 The 4B and 9B results were partly the leak; only the 27B probe's mean exceeds the text baseline (paired bootstrap over held-out pairs: +0.035, 95% CI 0.010–0.063), and the scale trend widens. Steering was run on the 4B model only. A regenerated dataset (v2) that removed the
-social anchor at the prompt saturated instead — the new neutral prompt produced a
-spec-sheet register that a word-counter reads at 0.995 — so the register was matched
-in a third generation (v3); see `RESULTS_UPDATE_2026-09-03.md` for all numbers. The
+social anchor at the prompt saturated instead, and a third (v3) that matched register
+left a neutral aside vocabulary that was never held out. A fourth generation (v4) gives
+each neutral twin a cue-linked aside family so leave-one-family-out removes both
+classes' vocabulary. On it the text baseline falls to 0.802 and the 4B and 9B probes
+fall with it, while the 27B probe holds at 0.901 (+0.099, 95% CI 0.054–0.140; +0.143 on
+the strict subset). The probe's advantage over vocabulary is specific to the largest
+model and survives the only holdout in this study that is fair to both classes. See
+`RESULTS_UPDATE_2026-09-03.md` for all numbers. The
 steering null is unaffected but is narrower than the table above implies: it was
 measured on ten neutral conversations of one topic, and 31/90 judged replies were
 truncated by max-tokens.
