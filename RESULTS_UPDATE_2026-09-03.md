@@ -1,6 +1,4 @@
-# Results update — 2026-09-03 (post-publication data audit)
-
-Supplements the README table. Sections numbered to continue the internal RESULTS.md.
+# Results update — 2026-09-03 (post-publication data audit and regenerations)
 
 ## 7. Robustness: explicit-self-report pairs removed (2026-09-03, local, free)
 
@@ -43,3 +41,22 @@ vocabulary. Third dataset, third shortcut (planted phrases → social anchors �
 27B on v2 was extracted for completeness; it cannot discriminate probe from text here.
 v3 (§9) gives both classes the identical "2-3 passing personal asides" instruction and
 varies only the asides' content.
+
+## 9. v3 (matched aside register) — text baseline still ~1.0; the flaw is the holdout's asymmetry
+
+v3 gave both classes the same "2-3 passing personal asides" instruction and matched
+length (103.7 vs 104.2 user words; social mentions 25 vs 15; explicit words 16 vs 1).
+Text-only leave-one-family-out: BoW 1.000 / 0.996 / 1.000 / 0.994. Top neutral
+features on every held-out family: "laundry, coffee, rain, package, bike, printer
+jammed" — the aside list I handed the generator. The lonely family is held out; the
+neutral side never is, so any consistent neutral vocabulary is a cross-family shortcut.
+This is the same structural flaw as v1's social anchors with a different word list, and
+it means v1–v3 all measured "can text tell these two generators' registers apart".
+v4 (§10) links a neutral aside family to each pair's cue family so leave-one-family-out
+removes both sides' vocabulary. v3 activations (4B/9B/27B) are extracted for the record.
+
+v3 activation holdout (means): 4B probe **0.943** / 27B probe **0.981** vs BoW 0.997
+(v3-strict, 366 convos: 0.946 / 0.958 vs 0.997). With the register matched, the
+probe comes OFF the ceiling while text stays on it — text is reading the neutral aside
+list, the probe is reading something less lexical. 9B: see line below.
+v3 @ 9B: probe 0.945 (strict 0.943) vs BoW 0.997. Scale trend on v3: 0.943 → 0.945 → 0.981.
