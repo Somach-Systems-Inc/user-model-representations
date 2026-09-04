@@ -1,0 +1,4 @@
+in-role, reasoning disabled, Qwen3.5-4B, data/convos_fam_clean.jsonl, alpha=0
+lonely: n=126/141 parsed, mean=4.36
+neutral: n=123/141 parsed, mean=3.96
+AUC lonely>neutral = 0.553 [95% bootstrap 0.485, 0.621]
