@@ -34,6 +34,30 @@ gap, produced no monotonic change in judged behavior or the model's stated ratin
 generalizable information about planted user-state cues, but the tested directions did
 not causally control user-facing behavior.
 
+## Update (2026-09-03): a second read of the data
+
+A blinded re-read of the dataset after publication found three lexical confounds in
+the v1 conversations (see `AUDIT_2026-09-03.md`): the "neutral" twins were socially
+anchored (175/200 mention a friend, partner or roommate; 21/200 lonely ones do), the
+lonely cues were templated and stacked, and 59/200 lonely conversations contain an
+explicit "no one / nobody / alone". Dropping the 59 explicit pairs and re-running the
+identical holdout on the same activations:
+
+| Subject model | Unseen-family probe AUC (clean 282) | Fixed TF-IDF baseline |
+|---|---:|---:|
+| Qwen 3.5 4B | 0.867 (was 0.923) | 0.940 |
+| Qwen 3.5 9B | 0.929 (was 0.963) | 0.940 |
+| Qwen 3.5 27B | 0.975 (was 0.985) | 0.940 |
+
+The 4B and 9B results were partly the leak; only the 27B probe beats the text baseline
+on every family, and the scale trend widens. A regenerated dataset (v2) that removed the
+social anchor at the prompt saturated instead — the new neutral prompt produced a
+spec-sheet register that a word-counter reads at 0.995 — so the register was matched
+in a third generation (v3); see `RESULTS_UPDATE_2026-09-03.md` for all numbers. The
+steering null is unaffected but is narrower than the table above implies: it was
+measured on ten neutral conversations of one topic, and 31/90 judged replies were
+truncated by max-tokens.
+
 ## Method
 
 - Generate synthetic multi-turn conversations labeled vulnerable or neutral.
@@ -74,6 +98,9 @@ memory for the selected checkpoint; probing and plotting are substantially light
 4. The interventions test single linear directions at a small set of layers.
 5. Steering was applied broadly across token positions; localized interventions remain
    untested.
+
+- The v1 neutral condition was "socially connected", not "no cue" (found 2026-09-03; see the update section). Only the 27B margin clears the lexical bar on the cleaned data.
+- The steering null covers neutral inputs of one topic only; lonely inputs were never steered.
 
 ## Authorship and AI assistance
 
