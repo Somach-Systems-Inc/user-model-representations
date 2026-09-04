@@ -80,3 +80,13 @@ On the only dataset where a probe-versus-text comparison is fair, the probe does
 beat text at 4B or 9B; the 27B point that carried v1's claim was not run on v4. Residue
 per AGENT_AUDIT.md: 21 lonely convos still explicit, 28 vs 14 person mentions, some aside
 words cross families. Commands: `scripts/v4_pipeline.sh`.
+
+## 11. In-role report with reasoning disabled (2026-09-03 23:0x, 4B on the 5090)
+
+`src/steered_report.py --alphas 0` on `data/convos_fam_clean.jsonl`, 141 lonely + 141
+neutral. Answer rate 126/141 and 123/141. Mean rating lonely 4.36, neutral 3.96.
+**AUC 0.553 [0.485, 0.621]** (bootstrap over conversations, B=2000). The pilot's
+"won't say it" (2/22 answers) was mostly the 4,096-token reasoning budget; with
+reasoning off the model says it, and what it says is near chance. The probe on the same
+cleaned conversations: 0.867 (4B). Raw: out/inrole_lonely.jsonl, out/inrole_neutral.jsonl;
+summary: review/inrole_result.txt.
