@@ -75,28 +75,28 @@ GW = 1.0; step = 0.28; ms = {"4B": 4.5, "9B": 5.5, "27B": 6.5}
 YMIN = 0.84
 for gi, d in enumerate(DATASETS):
     x0 = gi * GW
-    xs = [x0 - step, x0, x0 + step]
-    ys = [d["probe"][s] for s in SCALES]
+    ys = [d["probe"][s] for s in SCALES if s in d["probe"]]
+    xs = [x0 - step, x0, x0 + step][:len(ys)]
     axA.plot([x0 - step - 0.12, x0 + step + 0.12], [d["bow"]] * 2, color=GRAY, lw=2, ls=(0, (3, 2)), zorder=2, solid_capstyle="butt")
     axA.plot(xs, ys, color=BLUE, lw=2, zorder=3, solid_joinstyle="round")
-    for x, y, s in zip(xs, ys, SCALES):
+    for x, y, s in zip(xs, ys, [q for q in SCALES if q in d["probe"]]):
         axA.plot(x, y, "o", color=BLUE, ms=ms[s], mec="white", mew=1.2, zorder=4)
     # selective direct labels: 4B and 27B endpoints, plus the text baseline
     lo_above = ys[0] > d["bow"]
     axA.annotate(f"{ys[0]:.3f}", (xs[0], ys[0]), xytext=(0, 5 if lo_above else -5), textcoords="offset points",
                  ha="center", va="bottom" if lo_above else "top", fontsize=6.5, color=INK2)
-    hi_above = ys[2] >= d["bow"] - 0.004
+    hi_above = ys[-1] >= d["bow"] - 0.004
     if hi_above:
-        axA.annotate(f"{ys[2]:.3f}", (xs[2], ys[2]), xytext=(0, 5), textcoords="offset points", ha="center", va="bottom", fontsize=6.5, color=INK2)
+        axA.annotate(f"{ys[-1]:.3f}", (xs[-1], ys[-1]), xytext=(0, 5), textcoords="offset points", ha="center", va="bottom", fontsize=6.5, color=INK2)
     else:
-        axA.annotate(f"{ys[2]:.3f}", (xs[2], ys[2]), xytext=(6, -1), textcoords="offset points", ha="left", va="center", fontsize=6.5, color=INK2)
+        axA.annotate(f"{ys[-1]:.3f}", (xs[-1], ys[-1]), xytext=(6, -1), textcoords="offset points", ha="left", va="center", fontsize=6.5, color=INK2)
     # text baseline value sits just under/over its dashed segment, left end
     side, vert = d.get("bow_pos", ("left", "above" if ys[0] < d["bow"] else "below"))
     bx = x0 - step - 0.12 if side == "left" else x0 + step + 0.12
     axA.annotate(f"text {d['bow']:.3f}", (bx, d["bow"]), xytext=(0, 4 if vert == "above" else -4), textcoords="offset points",
                  ha=side, va="bottom" if vert == "above" else "top", fontsize=6.3, color=MUTED)
     if gi == 0:
-        for x, s in zip(xs, SCALES):
+        for x, s in zip(xs, [q for q in SCALES if q in d["probe"]]):
             axA.annotate(s, (x, YMIN), xytext=(0, 2), textcoords="offset points", ha="center", va="bottom", fontsize=6.3, color=MUTED)
 axA.set_xticks([gi * GW for gi in range(len(DATASETS))], [d["label"] for d in DATASETS], fontsize=6.8, color=INK, linespacing=1.15)
 axA.set_xlim(-0.6, (len(DATASETS) - 1) * GW + 0.6)

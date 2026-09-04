@@ -60,3 +60,23 @@ v3 activation holdout (means): 4B probe **0.943** / 27B probe **0.981** vs BoW 0
 probe comes OFF the ceiling while text stays on it — text is reading the neutral aside
 list, the probe is reading something less lexical. 9B: see line below.
 v3 @ 9B: probe 0.945 (strict 0.943) vs BoW 0.997. Scale trend on v3: 0.943 → 0.945 → 0.981.
+
+## 10. v4 (symmetric holdout: neutral aside families linked per pair) — 2026-09-03 22:41
+
+Text-only leave-one-family-out on v4: BoW **0.802** (per family 0.635 / 0.875 / 0.824 /
+0.873), down from 0.997 on v3 — the symmetric design removes most of the neutral-side
+shortcut. Activation probes (4B and 9B on the 5090; 27B not run):
+
+| dataset | scale | probe mean | BoW | probe − BoW |
+|---|---|---|---|---|
+| v4 (400) | 4B | 0.832 | 0.802 | +0.030 |
+| v4 (400) | 9B | 0.794 | 0.802 | −0.008 |
+| v4-strict (366) | 4B | 0.787 | 0.765 | +0.022 |
+| v4-strict (366) | 9B | 0.780 | 0.765 | +0.015 |
+
+Reading: with both classes' vocabularies held out, probe and text baseline both fall to
+about 0.8 and are within a few hundredths of each other (CIs in review/ci_results.md).
+On the only dataset where a probe-versus-text comparison is fair, the probe does not
+beat text at 4B or 9B; the 27B point that carried v1's claim was not run on v4. Residue
+per AGENT_AUDIT.md: 21 lonely convos still explicit, 28 vs 14 person mentions, some aside
+words cross families. Commands: `scripts/v4_pipeline.sh`.
