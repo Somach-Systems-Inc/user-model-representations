@@ -1,0 +1,317 @@
+% references.bib — verified entries only (2026-09-03).
+% Every entry was confirmed at the URL given (page fetched) or on a search result
+% that displayed title + authors. DOIs appear only where the publisher page showed one.
+% Keys are grouped by the claim they support; see citations.md for placement.
+
+% ---------- Motivation: user models and affective / dependence measurement ----------
+
+@misc{chen2024dashboard,
+  title   = {Designing a Dashboard for Transparency and Control of Conversational {AI}},
+  author  = {Chen, Yida and Wu, Aoyu and DePodesta, Trevor and Yeh, Catherine and Li, Kenneth and Castillo Marin, Nicholas and Patel, Oam and Riecke, Jan and Raval, Shivam and Seow, Olivia and Wattenberg, Martin and Vi{\'e}gas, Fernanda},
+  year    = {2024},
+  eprint  = {2406.07882},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.HC},
+  url     = {https://arxiv.org/abs/2406.07882},
+  note    = {arXiv preprint; v3 dated 2024-10-14. Linear probes read user age, gender, education and socioeconomic status from an open-source chat LLM's internal state}
+}
+
+@misc{impactbench2026,
+  title   = {Open Benchmark of {AI} Impact on Humans ({ImpactBench})},
+  author  = {{MIT Media Lab, Advancing Humans with AI (AHA) program} and Pataranutaporn, Pat and Maes, Pattie},
+  year    = {2026},
+  howpublished = {\url{https://impactbench.media.mit.edu/}},
+  url     = {https://impactbench.media.mit.edu/},
+  note    = {Website, accessed 2026-09-03. 18 expert-submitted constructs (incl. emotional dependence) scored on 14 models via multi-turn persona simulation; launched at the October 2025 Workshop for Designing Benchmarks for Human Flourishing with AI; project page: https://www.media.mit.edu/projects/the-open-benchmark-for-the-human-impact-of-ai/overview/. No paper yet (site says white paper forthcoming)}
+}
+
+@misc{fang2025psychosocial,
+  title   = {How {AI} and Human Behaviors Shape Psychosocial Effects of Extended Chatbot Use: A Longitudinal Randomized Controlled Study},
+  author  = {Fang, Cathy Mengying and Liu, Auren R. and Danry, Valdemar and Lee, Eunhae and Chan, Samantha W. T. and Pataranutaporn, Pat and Maes, Pattie and Phang, Jason and Lampe, Michael and Ahmad, Lama and Agarwal, Sandhini},
+  year    = {2025},
+  eprint  = {2503.17473},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.HC},
+  url     = {https://arxiv.org/abs/2503.17473},
+  note    = {arXiv preprint; v1 2025-03-21, v2 2025-10-02 (v1 title omitted the word ``Extended''). MIT Media Lab / OpenAI four-week RCT, n=981: loneliness, socialization, emotional dependence, problematic use}
+}
+
+@misc{phang2025affective,
+  title   = {Investigating Affective Use and Emotional Well-being on {ChatGPT}},
+  author  = {Phang, Jason and Lampe, Michael and Ahmad, Lama and Agarwal, Sandhini and Fang, Cathy Mengying and Liu, Auren R. and Danry, Valdemar and Lee, Eunhae and Chan, Samantha W. T. and Pataranutaporn, Pat and Maes, Pattie},
+  year    = {2025},
+  eprint  = {2504.03888},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.HC},
+  url     = {https://arxiv.org/abs/2504.03888},
+  note    = {arXiv preprint, 2025-04-04. Companion OpenAI/MIT study: platform-scale conversation analysis plus the RCT}
+}
+
+@misc{mccain2025affective,
+  title   = {How People Use {Claude} for Support, Advice, and Companionship},
+  author  = {McCain, Miles and Linthicum, Ryn and Lubinski, Chloe and Tamkin, Alex and Huang, Saffron and Stern, Michael and Handa, Kunal and Durmus, Esin and Neylon, Tyler and Ritchie, Stuart and Jagadish, Kamya and Maheshwary, Paruul and Heck, Sarah and Sanderford, Alexandra and Ganguli, Deep},
+  year    = {2025},
+  howpublished = {Anthropic Societal Impacts report},
+  url     = {https://www.anthropic.com/news/how-people-use-claude-for-support-advice-and-companionship},
+  note    = {Published 2025-06-27. Affective conversations are 2.9\% of Claude.ai traffic (131,484 of $\sim$4.5M); companionship and roleplay under 0.5\%}
+}
+
+@misc{staab2024beyond,
+  title   = {Beyond Memorization: Violating Privacy via Inference with Large Language Models},
+  author  = {Staab, Robin and Vero, Mark and Balunovi{\'c}, Mislav and Vechev, Martin},
+  year    = {2024},
+  eprint  = {2310.07298},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url     = {https://arxiv.org/abs/2310.07298},
+  note    = {ICLR 2024 (proceedings.iclr.cc); arXiv v1 2023-10-11. Prompted LLMs infer location, income, sex etc. from user text at up to 85\% top-1}
+}
+
+@misc{eggsyntax2024lmmu,
+  title   = {Language Models Model Us},
+  author  = {{eggsyntax}},
+  year    = {2024},
+  howpublished = {LessWrong},
+  url     = {https://www.lesswrong.com/posts/dLg7CyeTE4pqbbcnp/language-models-model-us},
+  note    = {Blog post, 2024-05-17, pseudonymous author. GPT-3.5 infers OKCupid authors' gender (86\%), education, ethnicity from $\sim$300-word essays by prompting. Cite only as a blog post}
+}
+
+% ---------- Linear probes: method, controls, and their limits ----------
+
+@misc{alain2016probes,
+  title   = {Understanding Intermediate Layers Using Linear Classifier Probes},
+  author  = {Alain, Guillaume and Bengio, Yoshua},
+  year    = {2016},
+  eprint  = {1610.01644},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ML},
+  url     = {https://arxiv.org/abs/1610.01644},
+  note    = {arXiv preprint; v1 2016-10-05, v4 2018-11-22}
+}
+
+@inproceedings{hewitt2019control,
+  title     = {Designing and Interpreting Probes with Control Tasks},
+  author    = {Hewitt, John and Liang, Percy},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)},
+  year      = {2019},
+  pages     = {2733--2743},
+  url       = {https://aclanthology.org/D19-1275/},
+  note      = {arXiv:1909.03368. Control tasks (random labels) as the baseline a selective probe must beat}
+}
+
+@article{belinkov2022probing,
+  title   = {Probing Classifiers: Promises, Shortcomings, and Advances},
+  author  = {Belinkov, Yonatan},
+  journal = {Computational Linguistics},
+  volume  = {48},
+  number  = {1},
+  pages   = {207--219},
+  year    = {2022},
+  doi     = {10.1162/coli_a_00422},
+  url     = {https://aclanthology.org/2022.cl-1.7/}
+}
+
+@inproceedings{ravichander2021probing,
+  title     = {Probing the Probing Paradigm: Does Probing Accuracy Entail Task Relevance?},
+  author    = {Ravichander, Abhilasha and Belinkov, Yonatan and Hovy, Eduard},
+  booktitle = {Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume},
+  year      = {2021},
+  pages     = {3363--3377},
+  doi       = {10.18653/v1/2021.eacl-main.295},
+  url       = {https://aclanthology.org/2021.eacl-main.295/},
+  note      = {Models encode properties they do not use; probe accuracy is not evidence of causal relevance}
+}
+
+@inproceedings{gururangan2018artifacts,
+  title     = {Annotation Artifacts in Natural Language Inference Data},
+  author    = {Gururangan, Suchin and Swayamdipta, Swabha and Levy, Omer and Schwartz, Roy and Bowman, Samuel R. and Smith, Noah A.},
+  booktitle = {Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 2 (Short Papers)},
+  year      = {2018},
+  pages     = {107--112},
+  doi       = {10.18653/v1/N18-2017},
+  url       = {https://aclanthology.org/N18-2017/},
+  note      = {A text classifier reading only the hypothesis recovers the label on $\sim$67\% of SNLI; the canonical lexical-shortcut result}
+}
+
+% ---------- Probes as monitors, with text / black-box baselines ----------
+
+@misc{mckenzie2025highstakes,
+  title   = {Detecting High-Stakes Interactions with Activation Probes},
+  author  = {McKenzie, Alex and Pawar, Urja and Blandfort, Phil and Bankes, William and Krueger, David and Lubana, Ekdeep Singh and Krasheninnikov, Dmitrii},
+  year    = {2025},
+  eprint  = {2506.10805},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url     = {https://arxiv.org/abs/2506.10805},
+  note    = {Accepted at NeurIPS 2025; arXiv v1 2025-06-12. Probes trained on synthetic data vs. prompted/finetuned LLM monitors; Appendix B.4 reports a TF-IDF+SVM word-statistics baseline and a bag-of-words filter used to remove confound-dominated training samples}
+}
+
+@inproceedings{goldowskydill2025deception,
+  title     = {Detecting Strategic Deception with Linear Probes},
+  author    = {Goldowsky-Dill, Nicholas and Chughtai, Bilal and Heimersheim, Stefan and Hobbhahn, Marius},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {267},
+  pages     = {19755--19786},
+  year      = {2025},
+  url       = {https://proceedings.mlr.press/v267/goldowsky-dill25a.html},
+  note      = {arXiv:2502.03407 (arXiv title uses ``Using'' rather than ``with''). Llama-3.3-70B probes, AUROC 0.96--0.999}
+}
+
+@misc{macdiarmid2024sleeper,
+  title   = {Simple Probes Can Catch Sleeper Agents},
+  author  = {MacDiarmid, Monte and Maxwell, Timothy and Schiefer, Nicholas and Mu, Jesse and Kaplan, Jared and Duvenaud, David and Bowman, Sam and Tamkin, Alex and Perez, Ethan and Sharma, Mrinank and Denison, Carson and Hubinger, Evan},
+  year    = {2024},
+  howpublished = {Anthropic Alignment Note},
+  url     = {https://www.anthropic.com/research/probes-catch-sleeper-agents},
+  note    = {Published 2024-04-23. Difference-of-means ``defection probes'' on residual-stream activations}
+}
+
+@misc{tillman2025activation,
+  title   = {Investigating Task-Specific Prompts and Sparse Autoencoders for Activation Monitoring},
+  author  = {Tillman, Henk and Mossing, Dan},
+  year    = {2025},
+  eprint  = {2504.20271},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url     = {https://arxiv.org/abs/2504.20271},
+  note    = {arXiv preprint, 2025-04-28 (OpenAI). Logistic-regression probe on one layer as the baseline activation monitor}
+}
+
+@misc{kantamneni2025sae,
+  title   = {Are Sparse Autoencoders Useful? A Case Study in Sparse Probing},
+  author  = {Kantamneni, Subhash and Engels, Joshua and Rajamanoharan, Senthooran and Tegmark, Max and Nanda, Neel},
+  year    = {2025},
+  eprint  = {2502.16681},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url     = {https://arxiv.org/abs/2502.16681},
+  note    = {arXiv preprint, 2025-02-23. Logistic-regression probes on raw activations as the baseline SAE probes fail to beat under data scarcity, imbalance, label noise and covariate shift}
+}
+
+@misc{nordby2026probescale,
+  title   = {Linear Probe Accuracy Scales with Model Size and Benefits from Multi-Layer Ensembling},
+  author  = {Nordby, Erik and Pais, Tasha and Parrack, Aviel},
+  year    = {2026},
+  eprint  = {2604.13386},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url     = {https://arxiv.org/abs/2604.13386},
+  note    = {arXiv preprint, 2026-04-15. Reports $\sim$5\% AUROC per 10$\times$ parameters ($R=0.81$) on deception-style probe tasks}
+}
+
+@misc{dipalma2025llamas,
+  title   = {{LLaMAs} Have Feelings Too: Unveiling Sentiment and Emotion Representations in {LLaMA} Models Through Probing},
+  author  = {Di Palma, Dario and De Bellis, Alessandro and Servedio, Giovanni and Anelli, Vito Walter and Narducci, Fedelucio and Di Noia, Tommaso},
+  year    = {2025},
+  eprint  = {2505.16491},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url     = {https://arxiv.org/abs/2505.16491},
+  note    = {arXiv preprint; v2 2025-05-30. Mid-layer probes for sentiment/emotion of the text, not of the user}
+}
+
+% ---------- Representation engineering / activation steering ----------
+
+@misc{zou2023repe,
+  title   = {Representation Engineering: A Top-Down Approach to {AI} Transparency},
+  author  = {Zou, Andy and Phan, Long and Chen, Sarah and Campbell, James and Guo, Phillip and Ren, Richard and Pan, Alexander and Yin, Xuwang and Mazeika, Mantas and Dombrowski, Ann-Kathrin and Goel, Shashwat and Li, Nathaniel and Byun, Michael J. and Wang, Zifan and Mallen, Alex and Basart, Steven and Koyejo, Sanmi and Song, Dawn and Fredrikson, Matt and Kolter, J. Zico and Hendrycks, Dan},
+  year    = {2023},
+  eprint  = {2310.01405},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url     = {https://arxiv.org/abs/2310.01405},
+  note    = {arXiv preprint; v1 2023-10-02, v4 2025-03-03}
+}
+
+@misc{turner2023actadd,
+  title   = {Steering Language Models with Activation Engineering},
+  author  = {Turner, Alexander Matt and Thiergart, Lisa and Leech, Gavin and Udell, David and Vazquez, Juan J. and Mini, Ulisse and MacDiarmid, Monte},
+  year    = {2023},
+  eprint  = {2308.10248},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url     = {https://arxiv.org/abs/2308.10248},
+  note    = {arXiv preprint; v1 2023-08-20 under the title ``Activation Addition: Steering Language Models Without Optimization'', v5 2024-10-10 under the current title. Introduces ActAdd (contrast-pair steering vectors added in the forward pass)}
+}
+
+@inproceedings{li2023iti,
+  title     = {Inference-Time Intervention: Eliciting Truthful Answers from a Language Model},
+  author    = {Li, Kenneth and Patel, Oam and Vi{\'e}gas, Fernanda and Pfister, Hanspeter and Wattenberg, Martin},
+  booktitle = {Advances in Neural Information Processing Systems 36 (NeurIPS 2023)},
+  year      = {2023},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/81b8390039b7302c909cb769f8b6cd93-Abstract-Conference.html},
+  note      = {NeurIPS 2023 spotlight; arXiv:2306.03341}
+}
+
+@inproceedings{marks2024geometry,
+  title     = {The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets},
+  author    = {Marks, Samuel and Tegmark, Max},
+  booktitle = {First Conference on Language Modeling (COLM 2024)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2310.06824},
+  note      = {arXiv:2310.06824; v1 2023-10-10, v3 2024-08-19. Difference-of-means probes generalize as well as trained probes and are more causally implicated in outputs}
+}
+
+@inproceedings{arditi2024refusal,
+  title     = {Refusal in Language Models Is Mediated by a Single Direction},
+  author    = {Arditi, Andy and Obeso, Oscar and Syed, Aaquib and Paleka, Daniel and Panickssery, Nina and Gurnee, Wes and Nanda, Neel},
+  booktitle = {Advances in Neural Information Processing Systems 37 (NeurIPS 2024)},
+  year      = {2024},
+  url       = {https://arxiv.org/abs/2406.11717},
+  note      = {arXiv:2406.11717; NeurIPS 2024 per dblp and proceedings.neurips.cc. A single difference-of-means direction is necessary and sufficient for refusal}
+}
+
+@misc{chen2025persona,
+  title   = {Persona Vectors: Monitoring and Controlling Character Traits in Language Models},
+  author  = {Chen, Runjin and Arditi, Andy and Sleight, Henry and Evans, Owain and Lindsey, Jack},
+  year    = {2025},
+  eprint  = {2507.21509},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url     = {https://arxiv.org/abs/2507.21509},
+  note    = {arXiv preprint; v1 2025-07-29, v3 2025-09-05. Note: a different ``Chen et al.'' from the user-model dashboard paper}
+}
+
+@misc{sofroniew2026emotion,
+  title   = {Emotion Concepts and Their Function in a Large Language Model},
+  author  = {Sofroniew, Nicholas and Kauvar, Isaac and Saunders, William and Chen, Runjin and Henighan, Tom and Hydrie, Sasha and Citro, Craig and Pearce, Adam and Tarng, Julius and Gurnee, Wes and Batson, Joshua and Zimmerman, Sam and Rivoire, Kelley and Fish, Kyle and Olah, Chris and Lindsey, Jack},
+  year    = {2026},
+  eprint  = {2604.07729},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url     = {https://arxiv.org/abs/2604.07729},
+  note    = {arXiv preprint, 2026-04-09 (Anthropic). Emotion-concept representations in Claude Sonnet 4.5 that causally shift preferences and misaligned behaviour when steered; emotions of the model, not a read of the user}
+}
+
+@misc{baez2026sycophancy,
+  title   = {Dissociating the Internal Representations of Sycophancy in {LLMs}},
+  author  = {Baez, Anthony and Karny, Sheer and Pataranutaporn, Pat},
+  year    = {2026},
+  eprint  = {2607.07003},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url     = {https://arxiv.org/abs/2607.07003},
+  note    = {arXiv preprint, 2026-07-08; accepted to the Mechanistic Interpretability Workshop at ICML 2026. Linear probes and steering vectors for factual vs. opinion sycophancy (MIT Media Lab)}
+}
+
+% ---------- Subject model and framing ----------
+
+@misc{qwen2026qwen35,
+  title   = {{Qwen3.5}: Towards Native Multimodal Agents},
+  author  = {{Qwen Team}},
+  year    = {2026},
+  month   = feb,
+  howpublished = {Model release blog and Hugging Face model cards},
+  url     = {https://huggingface.co/Qwen/Qwen3.5-27B},
+  note    = {Citation block as printed on the Qwen3.5-4B and Qwen3.5-27B model cards (Apache-2.0, February 2026); blog URL given there is https://qwen.ai/blog?id=qwen3.5. There is no separate Qwen3.5 dense-model technical report on arXiv as of 2026-09-03 (see citations.md)}
+}
+
+@misc{nanda2025pragmatic,
+  title   = {A Pragmatic Vision for Interpretability},
+  author  = {Nanda, Neel and Engels, Josh and Conmy, Arthur and Rajamanoharan, Senthooran and Chughtai, Bilal and McDougall, Callum and Kram{\'a}r, J{\'a}nos and Smith, Lewis},
+  year    = {2025},
+  howpublished = {AI Alignment Forum},
+  url     = {https://www.alignmentforum.org/posts/StENzDcD3kpfGJssR/a-pragmatic-vision-for-interpretability},
+  note    = {Blog post, 2025-12-01 (Google DeepMind mechanistic interpretability team). Author display names on the post are partly usernames (bilalchughtai, CallumMcDougall, lewis smith); expanded here}
+}
