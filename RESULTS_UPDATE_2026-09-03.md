@@ -1,4 +1,4 @@
-# Results update — 2026-09-03/04
+# Results update — 2026-09-03/04 (post-publication audit, regenerations, 27B on v4, 27B steering)
 
 ## 7. Robustness: explicit-self-report pairs removed (2026-09-03, local, free)
 
@@ -132,3 +132,35 @@ The 4B signal is only fully available at the final residual point, which is what
 late, largely lexical readout looks like; 9B and 27B peak mid-network. This is
 suggestive, not decisive: peak location is one number per model and no seed variance
 is reported here.
+
+## 12. Steering the 27B direction (2026-09-04 evening, two RTX 5090s, model sharded)
+
+Direction: the v4-trained logistic-regression probe at layer 36 of Qwen3.5-27B
+(`out/dir_v4_27B.pt`; cv AUC 0.990; natural class gap 3.62 against a mean residual norm
+of 88.9). Added at every position during generation; α = ±14 and ±27 ≈ 3.9× and 7.5× the
+gap, plus a matched-norm random direction. Ten conversations per cell, both neutral and
+(for the first time) lonely inputs; longer generation budget than the 4B runs (mean
+reply ~1,900 chars; truncated-looking 18/90 neutral, 39/90 lonely). Judge as in §4.
+
+Judged V+E+D (0–12), mean per cell, n = 10:
+
+| inputs | direction | α −27 | α −14 | α 0 | α +14 | α +27 | dose-response (Spearman) |
+|---|---|---|---|---|---|---|---|
+| neutral | probe | 1.00 | 0.90 | 1.30 | 1.40 | 1.40 | r 0.87, p 0.05 |
+| neutral | random | 1.40 | 1.40 | — | 1.70 | 0.70 | r −0.32 |
+| lonely | probe | 0.70 | 1.10 | 1.00 | 1.90 | **2.20** | r 0.90, p 0.04 |
+| lonely | random | **2.20** | 1.40 | — | 1.30 | 1.90 | r −0.40 |
+
+Bootstrap of each cell against α = 0 (4,000 resamples): on neutral inputs every cell's
+interval includes zero (largest +0.4). On lonely inputs the probe direction at +27 is
++1.2 [+0.3, +2.2] and at +14 is +0.9 [0.0, +2.0]; but the random direction at −27 is
+also +1.2 [+0.4, +2.0] and at +27 is +0.9 [+0.1, +1.9], with no monotone trend.
+
+Reading: at 27B the null is weaker than at 4B. The probe direction produces a monotone
+ordering of judged scores with α on lonely inputs (five points, r = 0.90), which the
+random direction does not, and that is the first hint of a causal handle in this study.
+But the random direction reaches the same magnitude at large |α| without ordering, so
+with n = 10 per cell the data cannot separate a direction-specific effect from a generic
+large-perturbation effect, and the ordering is one nominally significant test among
+four. Suggestive; not established. Neutral inputs: flat. Raw: out/steered27b_*.jsonl,
+out/judged27b_*.jsonl.
