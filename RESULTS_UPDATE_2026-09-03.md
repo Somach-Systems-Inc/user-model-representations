@@ -1,4 +1,4 @@
-# Results update — 2026-09-03/04 (post-publication audit, four dataset generations, symmetric holdout)
+# Results update — 2026-09-03/04
 
 ## 7. Robustness: explicit-self-report pairs removed (2026-09-03, local, free)
 
@@ -116,3 +116,19 @@ the small probes drop with it, but the 27B probe holds at 0.90 and beats text by
 larger margin than it ever did on the leaky datasets (+0.099 vs +0.035 on cleaned v1).
 The advantage over vocabulary is a 27B phenomenon, and it survives the only test in
 this study where a probe-versus-text comparison is fair.
+
+## 12. Layer-wise probe curves on v4 (2026-09-04)
+
+Per-layer 5-fold pair-grouped CV AUC at every residual point (`src/layer_curve.py`,
+`out/layer_curve_v4.json`):
+
+| model | peak CV AUC | peak layer | depth fraction |
+|---|---|---|---|
+| Qwen3.5-4B | 0.942 | 31 of 32 | 97% |
+| Qwen3.5-9B | 0.963 | 18 of 32 | 56% |
+| Qwen3.5-27B | 0.990 | 36 of 64 | 56% |
+
+The 4B signal is only fully available at the final residual point, which is what a
+late, largely lexical readout looks like; 9B and 27B peak mid-network. This is
+suggestive, not decisive: peak location is one number per model and no seed variance
+is reported here.
