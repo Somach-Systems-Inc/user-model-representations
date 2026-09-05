@@ -57,8 +57,8 @@ classes' vocabulary. On it the text baseline falls to 0.802 and the 4B and 9B pr
 fall with it, while the 27B probe holds at 0.901 (+0.099, 95% CI 0.054–0.140; +0.143 on
 the strict subset). The probe's advantage over vocabulary is specific to the largest
 model and survives the only holdout in this study that is fair to both classes. See
-`RESULTS_UPDATE_2026-09-03.md` for all numbers. The
-steering null is unaffected but is narrower than the table above implies: it was
+`RESULTS_UPDATE_2026-09-03.md` for all numbers. The 27B direction was then steered on lonely and neutral inputs (RESULTS_UPDATE §12): flat on neutral inputs; on lonely inputs a monotone trend that a matched-norm random direction matched in size, so unconfirmed at n = 10 per cell. The
+steering null on 4B is unaffected but is narrower than the table above implies: it was
 measured on ten neutral conversations of one topic, and 31/90 judged replies were
 truncated by max-tokens.
 
